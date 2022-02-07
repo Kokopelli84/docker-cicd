@@ -1,4 +1,5 @@
 import express from 'express';
+import 'dotenv/config';
 
 const app = express();
 
@@ -7,7 +8,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/env', (req, res) => {
-  res.send(process.env.NODE_ENV);
+  res.send({
+    NODE_ENV: process.env.NODE_ENV,
+    PORT: process.env.PORT,
+  });
 });
 
-app.listen(5000, () => console.log('Server started on port 5000'));
+app.listen(process.env.PORT, () => console.log('Server started on port 5000'));
