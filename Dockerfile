@@ -8,6 +8,8 @@ WORKDIR /usr/src/app
 # add permision to node user
 RUN chown -R node:node /usr/src/app
 
+COPY package*.json ./usr/src/app
+
 RUN yarn install --prod
 
 USER node
