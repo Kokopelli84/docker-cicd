@@ -1,5 +1,5 @@
 # Prepare environment
-FROM node:alpine AS BUILD_IMAGE
+FROM node:alpine
 
 RUN npm install pm2 -g
 
@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 # add permision to node user
 RUN chown -R node:node /usr/src/app
 
-COPY package*.json ./usr/src/app
+COPY . ./usr/src/app
 
 RUN yarn install --prod
 
