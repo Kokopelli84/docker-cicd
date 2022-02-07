@@ -1,20 +1,6 @@
 # Prepare environment
 FROM node:alpine AS BUILD_IMAGE
 
-WORKDIR /usr/src/app
-
-# copy all files
-COPY ./server .
-
-# install dependencies
-RUN yarn
-
-# build application
-RUN yarn run build
-
-# final result
-FROM node:alpine
-
 RUN npm install pm2 -g
 
 WORKDIR /usr/src/app
@@ -28,4 +14,4 @@ USER node
 
 EXPOSE 5000
 
-CMD [ "pm2-runtime", "dist/main.js"]
+CMD [ "pm2-runtime", "index.js"]
