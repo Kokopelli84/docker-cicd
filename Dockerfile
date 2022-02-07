@@ -10,6 +10,8 @@ RUN chown -R node:node /usr/src/app
 
 COPY . ./usr/src/app
 
+RUN ls -ll
+
 RUN yarn install --prod
 
 USER node
